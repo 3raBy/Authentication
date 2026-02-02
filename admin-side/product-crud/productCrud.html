@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: rgba(19, 91, 236, 0.1);
+            color: #135bec;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 border-r border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-background-dark flex flex-col">
+<div class="p-6 flex flex-col gap-1">
+<h1 class="text-primary text-xl font-black leading-tight tracking-tight">Admin Console</h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-[10px] font-bold uppercase tracking-[0.1em]">Store Management</p>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-7 overflow-y-auto">
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-[#4c669a] dark:text-gray-500 uppercase tracking-widest">Core</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm font-semibold">Dashboard Overview</span>
+</a>
+</div>
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-[#4c669a] dark:text-gray-500 uppercase tracking-widest">Inventory Management</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg active-nav" href="#">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<span class="text-sm font-semibold">Products (CRUD)</span>
+</a>
+</div>
+</div>
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-[#4c669a] dark:text-gray-500 uppercase tracking-widest">Cataloging</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">category</span>
+<span class="text-sm font-semibold">Categories (CRUD)</span>
+</a>
+</div>
+</div>
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-[#4c669a] dark:text-gray-500 uppercase tracking-widest">Sales &amp; Logistics</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+<span class="text-sm font-semibold">Order Management</span>
+</a>
+</div>
+</div>
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-[#4c669a] dark:text-gray-500 uppercase tracking-widest">Administration</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">manage_accounts</span>
+<span class="text-sm font-semibold">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">person_add</span>
+<span class="text-sm font-semibold">Add Admin</span>
+</a>
+</div>
+</div>
+</nav>
+<div class="p-4 border-t border-[#cfd7e7] dark:border-gray-700">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="text-sm font-medium">System Settings</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="bg-white dark:bg-background-dark border-b border-[#cfd7e7] dark:border-gray-700 px-8 py-4 flex items-center justify-between shrink-0">
+<div>
+<h2 class="text-2xl font-black text-[#0d121b] dark:text-white tracking-tight">Products</h2>
+<p class="text-sm text-[#4c669a] dark:text-gray-400">Manage your store's inventory and listings</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary hover:bg-blue-700 text-white flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                    Add New Product
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+<div class="max-w-7xl mx-auto space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-[#cfd7e7] dark:border-gray-700 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Total Products</p>
+<h3 class="text-xl font-black text-[#0d121b] dark:text-white">1,248</h3>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-[#cfd7e7] dark:border-gray-700 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Low Stock Items</p>
+<h3 class="text-xl font-black text-[#0d121b] dark:text-white">12</h3>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-[#cfd7e7] dark:border-gray-700 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Inventory Value</p>
+<h3 class="text-xl font-black text-[#0d121b] dark:text-white">$45,200.00</h3>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center justify-between">
+<div class="flex-1 max-w-md">
+<label class="relative block">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-[#4c669a]">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="form-input block w-full bg-white dark:bg-gray-800 border-none rounded-lg pl-10 pr-4 py-2.5 text-[#0d121b] dark:text-white placeholder:text-[#4c669a] focus:ring-2 focus:ring-primary/50 shadow-sm" placeholder="Search products by name or SKU..." type="text"/>
+</label>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border border-[#cfd7e7] dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filters
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border border-[#cfd7e7] dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-xl border border-[#cfd7e7] dark:border-gray-700 overflow-hidden shadow-sm">
+<div class="overflow-x-auto @container">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-700/50">
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider">ID</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider">Product</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider">Price</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider">Stock Status</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-200 text-xs font-bold uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#cfd7e7] dark:divide-gray-700">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4 text-sm text-[#4c669a] dark:text-gray-400">#P-8821</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-cover bg-center shrink-0 border border-[#cfd7e7] dark:border-gray-600" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXVXF9T5RTuPnHTUXoC3zeazhbHH6_QzrfQb-nd0nSetowVdv05PMdO48QpAXJ6EGMZz8OhlydMfCr6g9Mjf8bcoDvRnVJlV5a-cKCqy1wYYT00B22bRqmcLzi650ov5Kl76s9sWV0FCy73l2kXhHSmPoFh6uv69-uHMAr3TbRTV42DQdU1CTAhURhM-Bqn6WG-Z0IW2CaxZdAKOmW0_9lHe_zQzDZ1vBPvEifQBXRl54FY2Oqy51OqviHyeiMg0DsBAjcVeXeCADH");'></div>
+<span class="text-sm font-semibold text-[#0d121b] dark:text-white">Wireless Headphones Ultra</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">Electronics</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#0d121b] dark:text-white">$249.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-sm text-[#4c669a] dark:text-gray-400">124 in stock</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit Product">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete Product">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4 text-sm text-[#4c669a] dark:text-gray-400">#P-8822</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-cover bg-center shrink-0 border border-[#cfd7e7] dark:border-gray-600" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaHn9dsBqYDgVJlKhD-tcRAGLv0alY5uO9p8t51z9UCbuGYrEDd9qTVBV7H67oxM0g42PLhQ9anfeyO6rB1D_UHAi_S_sr35OHeVMzGSpKCXlhRFrMcWjyD086UCTfzzrG2IeY9nGJBCuKUGoMXhpSC52n393DDYeS7-wFTDqfdnbL7SBQfei5CKK5VOG4lc15UYF_0Hut9Ldsfov3pxwerOx5Nm_2xVtnNCpQ3PqAzJrC1vk1p7_rPR_b_KeQP3sP2kzY4WgyWsUa");'></div>
+<span class="text-sm font-semibold text-[#0d121b] dark:text-white">Full Grain Leather Wallet</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">Accessories</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#0d121b] dark:text-white">$85.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-orange-500"></div>
+<span class="text-sm text-[#4c669a] dark:text-gray-400">8 in stock</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit Product">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete Product">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 flex items-center justify-between border-t border-[#cfd7e7] dark:border-gray-700">
+<span class="text-xs font-medium text-[#4c669a] dark:text-gray-400">Showing 1 to 2 of 48 entries</span>
+<div class="flex items-center gap-1">
+<button class="p-2 text-[#0d121b] dark:text-gray-300 hover:bg-white dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-bold bg-primary text-white rounded-lg">1</button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-medium text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-gray-600 rounded-lg transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-medium text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-gray-600 rounded-lg transition-colors">3</button>
+<span class="text-[#4c669a] px-1">...</span>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-medium text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-gray-600 rounded-lg transition-colors">10</button>
+<button class="p-2 text-[#0d121b] dark:text-gray-300 hover:bg-white dark:hover:bg-gray-600 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
