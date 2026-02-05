@@ -66,7 +66,15 @@ addAdminForm.addEventListener("submit", (e) => {
     return;
   }
 
-  const newAdmin = createUser(firstName, lastName, email, password, "admin");
+  let newAdmin;
+
+  try {
+    newAdmin = new User(firstName, lastName, email, password, "admin");
+  } catch (error) {
+    adminMessage.textContent = error.message;
+    adminMessage.style.color = "red";
+    return;
+  }
   allUsers.push(newAdmin);
 
   set_Item(box.Users, allUsers);
